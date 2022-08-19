@@ -1,31 +1,50 @@
 public class Task {
 
     private String name;
-    private boolean status = false;
+    private boolean isDone = false;
 
+    /**
+     * Constructor to create task object
+     */
     public Task(String name){
         this.name = name;
     }
 
-    public boolean getStatus(){
-        return this.status;
+//    public boolean getStatus(){
+//        return this.isDone;
+//    }
+
+    public void setAsMarked(){
+        isDone = true;
     }
 
-    public void setDone(){
-        status = true;
-    }
-
-    public void setNotDone(){
-        status = false;
+    public String getDescription(){
+        return this.name;
     }
 
     /**
-     * Overriden toString function. Prints the completion status and the task name
-     * @return String representation of this task.
+     * retrieves status of task
+     */
+    public String getStatusIcon() {
+        return (isDone ? "X" : " "); // mark done task with X
+    }
+
+    /**
+     * set task as not done
+     * @return false boolean which means undone
+     */
+    public void setAsUnmarked(){
+        isDone = false;
+    }
+
+    /**
+     * Returns the string representation of the Task object.
+     *
+     * @return the string listing the elements in TaskList
      */
     @Override
     public String toString(){
-        if(status == true)
+        if(isDone == true)
             return "[X] " + name;
         else
             return "[ ] " + name;
