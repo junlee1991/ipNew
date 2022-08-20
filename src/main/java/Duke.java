@@ -176,9 +176,9 @@ public class Duke{
 
     public static void deadline(String input){
         input = input.substring(9);
-        String[] split = input.split("/");
+        String[] split = input.split("/by");
         String description = split[0].trim();
-        String time = split[1].substring(3);
+        String time = split[1].trim();
         Task task = new Deadline(description, time);
         list.add(task);
         System.out.println("Got it. I've added this task: \n" + task);
@@ -192,9 +192,9 @@ public class Duke{
 
     public static void event(String input){
         input = input.substring(6);
-        String[] split = input.split("/");
+        String[] split = input.split("/at");
         String description = split[0].trim();
-        String time = split[1].substring(3);
+        String time = split[1].trim();
         Task task = new Event(description, time);
         list.add(task);
         System.out.println("Got it. I've added this task: \n" + task);
