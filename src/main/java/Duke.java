@@ -1,268 +1,50 @@
-import Exceptions.InvalidInstructionException;
-import Exceptions.InvalidNumberException;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
-import java.util.Scanner;
 import java.util.ArrayList;
+
 import Exceptions.*;
 
-public class Duke{
+class Duke{
 
-    private static List<Task> list = new ArrayList<>();
+    public static final String DIRECTORY_NAME = System.getProperty("user.dir") + File.separator + "data";
+    public static final String FILE_NAME = "duke.txt";
+    private Storage storage;
+    private TaskList tasks;
+    private Ui ui;
 
-    /**
-     * Prints Welcome message
-     */
-    private static void greet(){
-        System.out.println("Hello! I'm Duke\n" + "What can I do for you?");
-    }
-
-    /**
-     * Prints Exit message
-     */
-    private static void exit(){
-        System.out.println("Bye. Hope to see you again soon!");
-    }
-
-
-    public static void main(String[] args)  {
-        String directoryName = System.getProperty("user.dir") + File.separator + "data";
-        String fileName = "duke.txt";
-        File directory = new File(directoryName);
-        if (!directory.exists()) {
-            directory.mkdir();
-        }
-        File file = new File(directoryName + File.separator + fileName);
+    // once duke2 gets initiated, create Ui object, create storage
+    // create
+    public Duke(String directory,String filePath) {
+        ui = new Ui();
+        storage = new Storage(directory, filePath);
         try {
-            file.createNewFile();
-            readFile(file);
+            tasks = new TaskList(storage.load());
         } catch (IOException e) {
-            System.out.println(e.getMessage());
-            return;
-        }
-
-        greet();
-        Scanner sc = new Scanner(System.in);
-        String input = sc.nextLine();
-        while (!input.startsWith("bye")) {
-            String[] c = input.split(" ");
-            try {
-                if (c[0].equals("list")) {
-                    listItOut();
-                } else if (c[0].equals("mark")) {
-                    mark(input);
-                    writeFile(file);
-                } else if (c[0].equals("unmark")) {
-                    unmark(input);
-                    writeFile(file);
-                } else if (c[0].equals("todo")) {
-                    todo(input);
-                    writeFile(file);
-                } else if (c[0].equals("deadline")) {
-                    deadline(input);
-                    writeFile(file);
-                } else if (c[0].equals("event")) {
-                    event(input);
-                    writeFile(file);
-                }  else if (c[0].equals("delete")) {
-                    delete(input);
-                    writeFile(file);
-                }else {
-                    throw new InvalidInstructionException();
-                }
-            }
-            catch (DukeException e) {
-                System.out.println(e.getMessage());
-            }
-            input = sc.nextLine();
-        }
-        exit();
-        sc.close();
-    }
-
-    /**
-     * List the items in the list
-     */
-
-    public static void listItOut(){
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(i + 1 + "." + list.get(i));
+            // print some error
+            ui.showLoadingError();
+            tasks = new TaskList();
         }
     }
 
-    /**
-     * Executes the marking of task as done.
-     * @param an input in the form of a string
-     */
-
-    public static void mark(String input) throws NumberFormatException{
+    public void run() {
+        ui.greet();
+        boolean isExit = false;
         try {
-            String number = input.substring(5);
-            int taskNum = Integer.parseInt(number);
-            int taskNumMinusOne = taskNum - 1;
-            if(taskNumMinusOne < 0 || taskNumMinusOne > list.size() - 1)
-                throw new InvalidNumberException();
-            list.get(taskNumMinusOne).setAsMarked();
-            System.out.println("Nice! I've marked this task as done:");
-            System.out.println(taskNum + "." + list.get(taskNumMinusOne));
-        }catch(InvalidNumberException e){
-            System.out.println(e.getMessage());
-        }catch(NumberFormatException e){
-            System.out.println("Please input a valid number.");
-        }
-    }
-
-    /**
-     * Deletes a task from the list
-     * @param input in the form of a string
-     */
-
-    public static void delete(String input){
-        String[] c = input.split(" ");
-        int taskNum = Integer.parseInt(c[1]);
-        int taskNumMinusOne = taskNum - 1;
-        System.out.println("Noted. I've removed this task: ");
-        System.out.println(taskNum + "." + list.get(taskNumMinusOne));
-        list.remove(taskNumMinusOne);
-        System.out.println("Now you have " + list.size()  +" tasks in the list.");
-    }
-
-    /**
-     * Executes the marking of task as not complete.
-     * @param input in the form of a string
-     */
-
-    public static void unmark(String input) throws NumberFormatException{
-        try {
-            String number = input.substring(7);
-            int taskNum = Integer.parseInt(number);
-            int taskNumMinusOne = taskNum - 1;
-            if(taskNumMinusOne < 0 || taskNumMinusOne > list.size() - 1)
-                throw new InvalidNumberException();
-            list.get(taskNumMinusOne).setAsUnmarked();
-            System.out.println("OK, I've marked this task as not done yet:");
-            System.out.println(taskNum + "." + list.get(taskNumMinusOne));
-        }catch(InvalidNumberException e){
-            System.out.println(e.getMessage());
-        }catch(NumberFormatException e){
-            System.out.println("Please input a valid number.");
-        }
-    }
-
-    /**
-     * Produce a new todo object and places inside list
-     * @param input in the form of a string
-     * @throws TodoException if there's nothing written todo.
-     */
-
-    public static void todo(String input) throws TodoException {
-        if(!(input.substring(4).isBlank())){
-            Task task= new Todo(input);
-            list.add(task);
-            System.out.println("Got it. I've added this task: \n" + task);
-            System.out.format("Now you have %s tasks in the list.\n", list.size());
-        }else{
-            throw new TodoException();
-        }
-    }
-
-    /**
-     * Produce a new deadline object and places inside list
-     * @param input in the form of a string
-     */
-
-    public static void deadline(String input){
-        input = input.substring(9);
-        String[] split = input.split("/by");
-        String description = split[0].trim();
-        String time = split[1].trim();
-        Task task = new Deadline(description, time);
-        list.add(task);
-        System.out.println("Got it. I've added this task: \n" + task);
-        System.out.format("Now you have %s tasks in the list.\n", list.size());
-    }
-
-    /**
-     * Produce a new event object and places inside list
-     * @param input in the form of a string
-     */
-
-    public static void event(String input){
-        input = input.substring(6);
-        String[] split = input.split("/at");
-        String description = split[0].trim();
-        String time = split[1].trim();
-        Task task = new Event(description, time);
-        list.add(task);
-        System.out.println("Got it. I've added this task: \n" + task);
-        System.out.format("Now you have %s tasks in the list.\n", list.size());
-    }
-
-    public static void writeFile(File file) {
-        try {
-            FileWriter fw = new FileWriter(file);
-            for(int i = 0; i < list.size(); ++i) {
-                Task task = list.get(i);
-                String done = task.getStatusIcon().equals("X") ? "1" : "0";
-                String write = "|" + done + "|" + task.getDescription();
-                if (task instanceof Todo) {
-                    write = "T" + write;
-                } else if (task instanceof Deadline) {
-                    write = "D" + write + "|" + ((Deadline) task).getBy();
-                } else if (task instanceof Event) {
-                    write = "E" + write + "|" + ((Event) task).getAt();
-                }
-                fw.write(write);
-                fw.write(System.lineSeparator());
+            while(isExit == false) {
+                // ui should scan for input.
+                String fullCommand = ui.readCommand();
+//            ui.showLine(); // show the divider line ("_______")
+                // parse should return a command!
+                Command c = Parser.parse(fullCommand);
+                c.execute(tasks, ui, storage);
+                isExit = c.isExit();
             }
-            fw.close();
-        } catch (IOException e ) {
-            System.out.println(e.getMessage());
+        } catch (DukeException e) {
+            ui.showError(e.getMessage());
         }
     }
 
-    public static void readFile(File file) {
-        try {
-            Scanner sc = new Scanner(file);
-            while (sc.hasNextLine()) {
-                String line = sc.nextLine();
-                String[] split = line.split("\\|");
-                String task = split[0];
-                String mark = split[1];
-                switch (task) {
-                    case "T":
-                        Todo todo = new Todo(split[2]);
-                        if (mark.equals("1")) {
-                            todo.setAsMarked();
-                        }
-                        list.add(todo);
-                        break;
-                    case "D":
-                        Deadline deadline = new Deadline(split[2], split[3]);
-                        if (mark.equals("1")) {
-                            deadline.setAsMarked();
-                        }
-                        list.add(deadline);
-                        break;
-                    case "E":
-                        Event event = new Event(split[2], split[3]);
-                        if (mark.equals("1")) {
-                            event.setAsMarked();
-                        }
-                        list.add(event);
-                        break;
-                }
-            }
-        } catch (FileNotFoundException e) {
-            System.out.println(e.getMessage());
-            return;
-        }
+    public static void main(String[] args) {
+        new Duke(DIRECTORY_NAME,FILE_NAME).run();
     }
 }
-
-
-
-

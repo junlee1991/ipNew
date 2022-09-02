@@ -23,10 +23,10 @@ public class Event extends Task {
 
     /**
      * Method to covert String into formatted string in date format.
-     * @param string with the exact format day/month/year time(24 hour format)
+     * @param str with the exact format day/month/year time(24 hour format)
      */
 
-    public String dateCovert(String str){
+    public String dateConvert(String str){
         // String to LocalDate
         DateTimeFormatter format1 = DateTimeFormatter.ofPattern("dd/MM/yyyy HHmm");
         LocalDateTime date = LocalDateTime.parse(str, format1);
@@ -39,7 +39,7 @@ public class Event extends Task {
      */
     @Override
     public String toString() {
-        return "[D]" + super.toString() + " (at: " + dateCovert(at) + ")";
+        return "[D]" + super.toString() + " (at: " + dateConvert(at) + ")";
 
     }
 }

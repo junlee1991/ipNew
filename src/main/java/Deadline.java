@@ -7,7 +7,7 @@ public class Deadline extends Task {
     /**
      * Constructor that takes in description of deadline and
      * @param description of deadline
-     * @param time in the format of a string in the format of day/month/year time eg. 02/05/2019 1800
+     * @param by in the format of a string in the format of day/month/year time eg. 02/05/2019 1800
      */
     public Deadline(String description, String by) {
         super(description);
