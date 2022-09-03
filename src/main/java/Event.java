@@ -8,7 +8,7 @@ public class Event extends Task {
     /**
      * Constructor to instantiate an Event object
      * @param description of Event
-     * @param time in the format of a string in the format of day/month/year time eg. 02/05/2019 1800
+     * @param at in the format of a string in the format of day/month/year time eg. 02/05/2019 1800
      */
 
     public Event(String description, String at) {

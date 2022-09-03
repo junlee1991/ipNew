@@ -33,22 +33,39 @@ public class Ui {
         System.out.println("Loading Error Encountered");
     }
 
-    public void printDelete(){};
-
-    public void printList(){};
-
-    public void printMark(){};
-
-    public void printUnmark(){};
-
 
     /**
      * List the items in the list
      */
-    public void listItOut(TaskList lst){
-        for (int i = 0; i < lst.size(); i++) {
-            System.out.println(i + 1 + "." + lst.get(i));
+    public void printList(TaskList taskList){
+        for (int i = 0; i < taskList.size(); i++) {
+            System.out.println(i + 1 + "." + taskList.get(i));
         }
+    }
+
+    public void printMark(int index, Task task){
+        System.out.println("Nice! I've marked this task as done:");
+        System.out.println(index + "." + task);
+    }
+
+    public void printUnmark(int index, Task task){
+        System.out.println("OK, I've marked this task as not done yet:");
+        System.out.println(index + "." + task);
+    }
+
+    public void printAddTask(int size, Task task){
+        System.out.println("Got it. I've added this task: \n" + task);
+        System.out.format("Now you have %s tasks in the list.\n", size);
+    }
+
+    public void printDelete(int index, Task task){
+        System.out.println("Noted. I've removed this task: ");
+        System.out.println(index + "." + task);
+        // check here if index - 1 = tasksize - 1
+    }
+
+    public void postDelete(TaskList taskList){
+        System.out.println("Now you have " + taskList.size()  +" tasks in the list.");
     }
 
     /**
@@ -58,5 +75,9 @@ public class Ui {
      */
     public void showError(String s) {
         System.out.println(s);
+    }
+
+    public void showLine() {
+        System.out.println("____________________________________________________________________________");
     }
 }

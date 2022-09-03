@@ -33,7 +33,7 @@ class Duke{
             while(isExit == false) {
                 // ui should scan for input.
                 String fullCommand = ui.readCommand();
-//            ui.showLine(); // show the divider line ("_______")
+            ui.showLine(); // show the divider line ("_______")
                 // parse should return a command!
                 Command c = Parser.parse(fullCommand);
                 c.execute(tasks, ui, storage);

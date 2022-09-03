@@ -16,8 +16,7 @@ public class DeadlineCommand extends Command{
         String time = split[1].trim();
         Task task = new Deadline(description, time);
         taskList.add(task);
-        System.out.println("Got it. I've added this task: \n" + task);
-        System.out.format("Now you have %s tasks in the list.\n", taskList.size());
+        ui.printAddTask(taskList.size(),task);
         storage.writeFile(taskList);
     }
 }

@@ -15,8 +15,7 @@ public class UnmarkCommand extends Command{
             if(taskNumMinusOne < 0 || taskNumMinusOne > taskList.size() - 1)
                 throw new InvalidNumberException();
             taskList.get(taskNumMinusOne).setAsUnmarked();
-            System.out.println("OK, I've marked this task as not done yet:");
-            System.out.println(index + "." + taskList.get(taskNumMinusOne));
+            ui.printUnmark(index , taskList.get(taskNumMinusOne));
             storage.writeFile(taskList);
     }
 }
