@@ -14,7 +14,7 @@ public class UnmarkCommand extends Command{
             int taskNumMinusOne = index - 1;
             if(taskNumMinusOne < 0 || taskNumMinusOne > taskList.size() - 1)
                 throw new InvalidNumberException();
-            taskList.get(taskNumMinusOne).setAsUnmarked();
+            taskList.unmarkTask(index);
             ui.printUnmark(index , taskList.get(taskNumMinusOne));
             storage.writeFile(taskList);
     }

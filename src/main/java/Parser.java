@@ -37,55 +37,79 @@ public class Parser {
     }
 
     public static Command parse(String command) throws DukeException{
-        String[] c = command.split(" ");
-
+        String[] c = command.split(" ", 2);
+        String instruction = c[0];
+        Command com = null;
         try {
-            if (c[0].equals("list")) {
-                return new ListCommand();
-            }
-
-            else if (c[0].equals("mark")) {
-                String number = command.substring(5);
-                int taskNum = Integer.parseInt(number);
-                return new MarkCommand(taskNum);
-            }
-
-            else if (c[0].equals("unmark")) {
-                String number = command.substring(7);
-                int index = Integer.parseInt(number);
-                return new UnmarkCommand(index);
-            }
-
-            else if (c[0].equals("todo")) {
-                return new TodoCommand(command);
-            }
-
-            else if (c[0].equals("deadline")) {
-                return new DeadlineCommand(command);
-            }
-
-            else if (c[0].equals("event")) {
-                return new EventCommand(command);
-            }
-
-            else if (c[0].equals("delete")) {
-                int taskNum = Integer.parseInt(c[1]);
-                return new DeleteCommand(taskNum);
-            }
-
-            else if (c[0].equals("bye")){
-                return new ByeCommand();
-            }
-
-            else {
-                throw new InvalidInstructionException();
+            switch(instruction){
+                case("list"):
+                    com = new ListCommand();
+                    break;
+                case("mark"):
+                    checkIfBlank(c);
+                    checkIfValidInteger(c);
+                    String number = command.substring(5);
+                    int taskNum = Integer.parseInt(number);
+                    com = new MarkCommand(taskNum);
+                    break;
+                case("unmark"):
+                    checkIfBlank(c);
+                    checkIfValidInteger(c);
+                    String number2 = command.substring(7);
+                    int index = Integer.parseInt(number2);
+                    com = new UnmarkCommand(index);
+                    break;
+                case("todo"):
+                    checkIfBlank(c);
+                    com = new TodoCommand(command);
+                    break;
+                case("deadline"):
+                    checkIfBlank(c);
+                    String[] stuff = c[1].split(" /by ");
+                    checkIfBlank(stuff);
+                    com = new DeadlineCommand(command);
+                    break;
+                case("event"):
+                    checkIfBlank(c);
+                    String[] stuff2 = c[1].split(" /at ");
+                    checkIfBlank(stuff2);
+                    com = new EventCommand(command);
+                    break;
+                case("delete"):
+                    checkIfBlank(c);
+                    checkIfValidInteger(c);
+                    int taskNum2 = Integer.parseInt(c[1]);
+                    com = new DeleteCommand(taskNum2);
+                    break;
+                case("bye"):
+                    com = new ByeCommand();
+                    break;
+                default:
+                    throw new InvalidInstructionException();
             }
         }
-        catch (DukeException e) {
+        catch (DukeException | NumberFormatException e) {
             System.out.println(e.getMessage());
         }
-        return null;
+        return com;
+    }
+
+    public static void checkIfBlank(String[] arr) throws BlankException{
+        try {
+            if (arr[1].isBlank())
+                throw new BlankException();
+        }catch(ArrayIndexOutOfBoundsException e){
+            throw new BlankException();
+        }
+    }
+
+    public static void checkIfValidInteger(String[] arr) throws NumberFormatException{
+        try{
+             Integer.parseInt(arr[1]);
+
+        }catch(NumberFormatException e){
+            System.out.println("Please provide a valid number");
+        }
     }
 }
-
 

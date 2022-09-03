@@ -15,7 +15,7 @@ public class MarkCommand extends Command{
         int taskNumMinusOne = index - 1;
         if(taskNumMinusOne < 0 || taskNumMinusOne > taskList.size() - 1)
             throw new InvalidNumberException();
-        taskList.get(taskNumMinusOne).setAsMarked();
+        taskList.markTask(index);
         ui.printMark(index, taskList.get(taskNumMinusOne));
         storage.writeFile(taskList);
     }

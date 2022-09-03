@@ -35,8 +35,6 @@ public class Storage{
         return al;
     }
 
-
-
     public static ArrayList<Task> readFile(File file) {
         ArrayList<Task> tasks = new ArrayList<>();
         try {

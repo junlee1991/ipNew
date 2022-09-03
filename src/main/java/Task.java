@@ -10,10 +10,6 @@ public class Task {
         this.name = name;
     }
 
-//    public boolean getStatus(){
-//        return this.isDone;
-//    }
-
     public void setAsMarked(){
         isDone = true;
     }

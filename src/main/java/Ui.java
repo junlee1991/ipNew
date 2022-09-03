@@ -26,13 +26,13 @@ public class Ui {
     }
 
     public void exit(){
+        this.scanner.close();
         System.out.println("Bye. Hope to see you again soon!");
     }
 
     public void showLoadingError(){
         System.out.println("Loading Error Encountered");
     }
-
 
     /**
      * List the items in the list
@@ -61,7 +61,6 @@ public class Ui {
     public void printDelete(int index, Task task){
         System.out.println("Noted. I've removed this task: ");
         System.out.println(index + "." + task);
-        // check here if index - 1 = tasksize - 1
     }
 
     public void postDelete(TaskList taskList){
@@ -69,7 +68,7 @@ public class Ui {
     }
 
     /**
-     * Prints the error message when Exception occured
+     * Prints the error message when Exception occurred
      *
      * @param s string that gets printed
      */
