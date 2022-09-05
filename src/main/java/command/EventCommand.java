@@ -1,4 +1,11 @@
+package command;
+
 import Exceptions.DukeException;
+import duke.Storage;
+import duke.Ui;
+import tasks.Event;
+import tasks.Task;
+import tasks.TaskList;
 
 public class EventCommand extends Command {
 

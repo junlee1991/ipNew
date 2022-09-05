@@ -1,11 +1,6 @@
-//import Exceptions.DukeException;
+package duke;//import Exceptions.DukeException;
+import command.*;
 import Exceptions.*;
-
-import java.io.IOException;
-import java.time.format.DateTimeParseException;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 
 /**
@@ -29,7 +24,7 @@ public class Parser {
      * Constructor.
      *
      * @param storage The storage list used.
-     * @param ui   The Ui interface used.
+     * @param ui   The duke.Ui interface used.
      */
     public Parser(Storage storage, Ui ui) {
         this.storage = storage;
@@ -55,8 +50,8 @@ public class Parser {
                 case("unmark"):
                     checkIfBlank(c);
                     checkIfValidInteger(c);
-                    String number2 = command.substring(7);
-                    int index = Integer.parseInt(number2);
+                    number = command.substring(7);
+                    int index = Integer.parseInt(number);
                     com = new UnmarkCommand(index);
                     break;
                 case("todo"):
@@ -87,9 +82,8 @@ public class Parser {
                 default:
                     throw new InvalidInstructionException();
             }
-        }
-        catch (DukeException | NumberFormatException e) {
-            System.out.println(e.getMessage());
+        } catch (NumberFormatException e) {
+            throw new NumberFormatException("some msg");
         }
         return com;
     }
@@ -106,9 +100,8 @@ public class Parser {
     public static void checkIfValidInteger(String[] arr) throws NumberFormatException{
         try{
              Integer.parseInt(arr[1]);
-
         }catch(NumberFormatException e){
-            System.out.println("Please provide a valid number");
+            throw new NumberFormatException("Please provide a valid number");
         }
     }
 }

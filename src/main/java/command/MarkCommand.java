@@ -1,5 +1,10 @@
+package command;
+
 import Exceptions.DukeException;
 import Exceptions.InvalidNumberException;
+import duke.Storage;
+import duke.Ui;
+import tasks.TaskList;
 
 public class MarkCommand extends Command{
 
@@ -8,6 +13,10 @@ public class MarkCommand extends Command{
     public MarkCommand(int index){
         super();
         this.index = index;
+    }
+
+    public void validate() throws Exception {
+
     }
 
     @Override

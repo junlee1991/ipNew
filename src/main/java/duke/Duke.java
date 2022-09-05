@@ -1,8 +1,12 @@
+package duke;
+
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
+import command.Command;
 import Exceptions.*;
+import tasks.TaskList;
+
 
 class Duke {
 
@@ -12,7 +16,7 @@ class Duke {
     private TaskList tasks;
     private Ui ui;
 
-    // once duke gets initiated, create Ui object, create storage
+    // once duke gets initiated, create duke.Ui object, create storage
     public Duke(String directory, String filePath) {
         ui = new Ui();
         storage = new Storage(directory, filePath);
@@ -38,7 +42,6 @@ class Duke {
                 isExit = c.isExit();
             } catch (DukeException e) {
                 ui.showError(e.getMessage());
-            } catch (NullPointerException e) {
             }
         }
     }

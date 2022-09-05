@@ -1,3 +1,8 @@
+package duke;
+
+import tasks.Task;
+import tasks.TaskList;
+
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -22,7 +27,7 @@ public class Ui {
     }
 
     public void greet(){
-        System.out.println("Hello! I'm Duke\n" + "What can I do for you?");
+        System.out.println("Hello! I'm duke.Duke\n" + "What can I do for you?");
     }
 
     public void exit(){
@@ -79,4 +84,5 @@ public class Ui {
     public void showLine() {
         System.out.println("____________________________________________________________________________");
     }
+
 }

@@ -1,22 +1,28 @@
+package tasks;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class Deadline extends Task {
+public class Event extends Task {
 
-    protected String by;
+    protected String at;
+
     /**
-     * Constructor that takes in description of deadline and
-     * @param description of deadline
-     * @param by in the format of a string in the format of day/month/year time eg. 02/05/2019 1800
+     * Constructor to instantiate an tasks.Event object
+     * @param description of tasks.Event
+     * @param at in the format of a string in the format of day/month/year time eg. 02/05/2019 1800
      */
-    public Deadline(String description, String by) {
+
+    public Event(String description, String at) {
         super(description);
-        this.by = by;
+        this.at = at;
     }
 
-    public String getBy() {
-        return by;
+
+    public String getAt() {
+        return this.at;
     }
+
     /**
      * Method to covert String into formatted string in date format.
      * @param str with the exact format day/month/year time(24 hour format)
@@ -30,9 +36,12 @@ public class Deadline extends Task {
         String formattedDate = date.format(DateTimeFormatter.ofPattern("dd MMM yyyy h:mm a"));
         return formattedDate;
     }
-
+    /**
+     * Override the toString format to include description and date
+     */
     @Override
     public String toString() {
-        return "[D]" + super.toString() + " (by: " + dateConvert(by) + ")";
+        return "[D]" + super.toString() + " (at: " + dateConvert(at) + ")";
+
     }
 }

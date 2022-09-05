@@ -1,3 +1,5 @@
+package tasks;
+
 public class Task {
 
     private String name;
@@ -34,9 +36,9 @@ public class Task {
     }
 
     /**
-     * Returns the string representation of the Task object.
+     * Returns the string representation of the tasks.Task object.
      *
-     * @return the string listing the elements in TaskList
+     * @return the string listing the elements in tasks.TaskList
      */
     @Override
     public String toString(){
