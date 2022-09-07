@@ -41,7 +41,6 @@ public class Event extends Task {
      */
     @Override
     public String toString() {
-        return "[D]" + super.toString() + " (at: " + dateConvert(at) + ")";
-
+        return "[E]" + super.toString() + " (at: " + dateConvert(at) + ")";
     }
 }
