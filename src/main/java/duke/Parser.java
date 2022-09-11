@@ -31,11 +31,16 @@ public class Parser {
         this.ui = ui;
     }
 
+    /***
+     * parse command according to instruction
+     * @param command
+     * @return
+     * @throws DukeException
+     */
     public static Command parse(String command) throws DukeException{
         String[] c = command.split(" ", 2);
         String instruction = c[0];
         Command com = null;
-        try {
             switch(instruction){
                 case("list"):
                     com = new ListCommand();
@@ -86,9 +91,6 @@ public class Parser {
                 default:
                     throw new InvalidInstructionException();
             }
-        } catch (NumberFormatException e) {
-            throw new NumberFormatException("some msg");
-        }
         return com;
     }
 
