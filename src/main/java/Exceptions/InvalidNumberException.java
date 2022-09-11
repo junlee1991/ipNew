@@ -1,5 +1,9 @@
 package Exceptions;
 
+/**
+ * Exception class handles if an input is not an integer from the list
+ */
+
 public class InvalidNumberException extends DukeException {
 
     public InvalidNumberException() {

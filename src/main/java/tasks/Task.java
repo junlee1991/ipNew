@@ -1,5 +1,9 @@
 package tasks;
 
+/***
+ * A task class to store information about a task.
+ */
+
 public class Task {
 
     private String name;
@@ -12,16 +16,23 @@ public class Task {
         this.name = name;
     }
 
+    /***
+     * set the task as done
+     */
     public void setAsMarked(){
         isDone = true;
     }
-
+    /***
+     * a method to get the description of the task
+     * @return String
+     */
     public String getDescription(){
         return this.name;
     }
 
     /**
      * retrieves status of task
+     * @return String
      */
     public String getStatusIcon() {
         return (isDone ? "X" : " "); // mark done task with X
@@ -37,7 +48,6 @@ public class Task {
 
     /**
      * Returns the string representation of the tasks.Task object.
-     *
      * @return the string listing the elements in tasks.TaskList
      */
     @Override

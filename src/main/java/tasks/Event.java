@@ -8,9 +8,9 @@ public class Event extends Task {
     protected String at;
 
     /**
-     * Constructor to instantiate an tasks.Event object
+     * Constructor to instantiate a tasks.Event object
      * @param description of tasks.Event
-     * @param at in the format of a string in the format of day/month/year time eg. 02/05/2019 1800
+     * @param at in the form of a string in the format of day/month/year time eg. 02/05/2019 1800
      */
 
     public Event(String description, String at) {
@@ -18,7 +18,10 @@ public class Event extends Task {
         this.at = at;
     }
 
-
+    /***
+     * Method to return the event time
+     * @return String
+     */
     public String getAt() {
         return this.at;
     }
@@ -38,6 +41,7 @@ public class Event extends Task {
     }
     /**
      * Override the toString format to include description and date
+     * @return A string
      */
     @Override
     public String toString() {

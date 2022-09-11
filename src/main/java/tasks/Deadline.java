@@ -3,11 +3,15 @@ package tasks;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * A type of tasks which takes in a specified date and time (deadline)
+ */
+
 public class Deadline extends Task {
 
     protected String by;
     /**
-     * Constructor that takes in description of deadline and
+     * Constructor of Deadline
      * @param description of deadline
      * @param by in the format of a string in the format of day/month/year time eg. 02/05/2019 1800
      */
@@ -21,7 +25,7 @@ public class Deadline extends Task {
     }
     /**
      * Method to covert String into formatted string in date format.
-     * @param str with the exact format day/month/year time(24 hour format)
+     * @param str with the exact format day/month/year time(24 hour format) eg. 02/05/2019 1800
      */
 
     public String dateConvert(String str){
@@ -33,6 +37,10 @@ public class Deadline extends Task {
         return formattedDate;
     }
 
+    /***
+     * Overrides the toString format to represent a Deadline Object
+     * @return A string
+     */
     @Override
     public String toString() {
         return "[D]" + super.toString() + " (by: " + dateConvert(by) + ")";

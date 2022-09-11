@@ -1,10 +1,10 @@
-package duke;//import Exceptions.DukeException;
+package duke;
 import command.*;
 import Exceptions.*;
 
 
 /**
- * Handles user input.
+ * A Parser class to deal with making sense of the user command
  *
  * @author Julio Harjo
  */
@@ -39,6 +39,10 @@ public class Parser {
             switch(instruction){
                 case("list"):
                     com = new ListCommand();
+                    break;
+                case("find"):
+                    checkIfBlank(c);
+                    com = new FindCommand(c[1]);
                     break;
                 case("mark"):
                     checkIfBlank(c);
@@ -88,6 +92,11 @@ public class Parser {
         return com;
     }
 
+    /***
+     * Check if description after command is empty
+     * @param arr
+     * @throws BlankException
+     */
     public static void checkIfBlank(String[] arr) throws BlankException{
         try {
             if (arr[1].isBlank())
@@ -97,6 +106,11 @@ public class Parser {
         }
     }
 
+    /***
+     * checks if input is a valid integer from the list
+     * @param arr
+     * @throws NumberFormatException
+     */
     public static void checkIfValidInteger(String[] arr) throws NumberFormatException{
         try{
              Integer.parseInt(arr[1]);

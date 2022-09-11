@@ -8,16 +8,30 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/***
+ * A storage class to deals with loading tasks from the file and saving tasks in the file
+ */
+
 public class Storage {
 
     protected String directory;
     protected String filePath;
 
+    /***
+     * Constructor for storage class
+     * @param directory
+     * @param filePath
+     */
     public Storage(String directory, String filePath){
         this.directory = directory;
         this.filePath = filePath;
     }
 
+    /***
+     * Create file and directory if not exist
+     * @return An ArrayList of Task
+     * @throws IOException
+     */
     public ArrayList<Task> load() throws IOException{
         ArrayList<Task> al = new ArrayList<>();
         File dir = new File(directory);
@@ -38,6 +52,11 @@ public class Storage {
         return al;
     }
 
+    /***
+     * reads the given file and puts it in an ArrayList
+     * @param file
+     * @return ArrayList of Task
+     */
     public static ArrayList<Task> readFile(File file) {
         ArrayList<Task> tasks = new ArrayList<>();
         try {
@@ -79,7 +98,10 @@ public class Storage {
         return tasks;
     }
 
-    //overwrites and rewrite to the text file
+    /***
+     * Overwrites and rewrites tasks to the duke.txt file
+     * @param taskList
+     */
     public void writeFile(TaskList taskList) {
         try{
             String FULL_FILE = directory  + File.separator + filePath;

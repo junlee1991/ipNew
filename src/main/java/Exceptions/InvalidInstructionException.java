@@ -1,5 +1,9 @@
 package Exceptions;
 
+/**
+ * Exception class handles if an inappropriate command is given
+ */
+
 public class InvalidInstructionException extends DukeException{
 
     public InvalidInstructionException(){

@@ -7,14 +7,29 @@ import tasks.Deadline;
 import tasks.Task;
 import tasks.TaskList;
 
+/**
+ * this class handles when a deadline command is called and executed
+ */
 public class DeadlineCommand extends Command{
 
     private String input;
 
+    /**
+     * constructor for Deadline Command
+     * @param input
+     */
     public DeadlineCommand(String input){
         super();
         this.input = input;
     }
+
+    /***
+     * splits the input and adds a deadline task into TaskList
+     * @param taskList
+     * @param ui
+     * @param storage
+     * @throws DukeException
+     */
     @Override
     public void execute(TaskList taskList, Ui ui, Storage storage) throws DukeException {
         input = input.substring(9);

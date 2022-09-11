@@ -7,6 +7,9 @@ import command.Command;
 import Exceptions.*;
 import tasks.TaskList;
 
+/***
+ * Main class
+ */
 
 class Duke {
 
@@ -16,6 +19,11 @@ class Duke {
     private TaskList tasks;
     private Ui ui;
 
+    /***
+     * Constructor for Duke.
+     * @param directory
+     * @param filePath
+     */
     // once duke gets initiated, create duke.Ui object, create storage
     public Duke(String directory, String filePath) {
         ui = new Ui();
@@ -29,6 +37,9 @@ class Duke {
         }
     }
 
+    /***
+     * A method to runs the program.
+     */
     public void run() {
         ui.greet();
         boolean isExit = false;

@@ -16,6 +16,13 @@ public class EventCommand extends Command {
         this.input = input;
     }
 
+    /***
+     * Adds an Event Task into the taskList and updates storage files
+     * @param taskList
+     * @param ui
+     * @param storage
+     * @throws DukeException
+     */
     @Override
     public void execute(TaskList taskList, Ui ui, Storage storage) throws DukeException {
         input = input.substring(6);
