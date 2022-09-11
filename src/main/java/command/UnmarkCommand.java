@@ -1,7 +1,7 @@
 package command;
 
-import Exceptions.DukeException;
-import Exceptions.InvalidNumberException;
+import exceptions.DukeException;
+import exceptions.InvalidNumberException;
 import duke.Storage;
 import duke.Ui;
 import tasks.TaskList;

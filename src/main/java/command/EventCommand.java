@@ -1,6 +1,6 @@
 package command;
 
-import Exceptions.DukeException;
+import exceptions.DukeException;
 import duke.Storage;
 import duke.Ui;
 import tasks.Event;

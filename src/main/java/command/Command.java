@@ -1,6 +1,6 @@
 package command;
 
-import Exceptions.*;
+import exceptions.*;
 import duke.Storage;
 import duke.Ui;
 import tasks.TaskList;

@@ -1,4 +1,4 @@
-package Exceptions;
+package exceptions;
 
 /**
  * Exception class handles if an inappropriate command is given

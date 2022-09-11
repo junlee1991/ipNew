@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOException;
 
 import command.Command;
-import Exceptions.*;
+import exceptions.*;
 import tasks.TaskList;
 
 /***

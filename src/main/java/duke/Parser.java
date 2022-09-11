@@ -1,6 +1,6 @@
 package duke;
 import command.*;
-import Exceptions.*;
+import exceptions.*;
 
 
 /**
@@ -34,7 +34,7 @@ public class Parser {
     /***
      * parse command according to instruction
      * @param command
-     * @return
+     * @return Command
      * @throws DukeException
      */
     public static Command parse(String command) throws DukeException{
