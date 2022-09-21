@@ -29,12 +29,12 @@ public class UnmarkCommand extends Command{
      * @throws DukeException
      */
     @Override
-    public void execute(TaskList taskList, Ui ui, Storage storage) throws DukeException{
+    public String execute(TaskList taskList, Ui ui, Storage storage) throws DukeException{
             int taskNumMinusOne = index - 1;
             if(taskNumMinusOne < 0 || taskNumMinusOne > taskList.size() - 1)
                 throw new InvalidNumberException();
             taskList.unmarkTask(index);
-            ui.printUnmark(index , taskList.get(taskNumMinusOne));
             storage.writeFile(taskList);
+            return ui.printUnmark(index , taskList.get(taskNumMinusOne));
     }
 }

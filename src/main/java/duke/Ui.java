@@ -37,6 +37,7 @@ public class Ui {
     /***
      * prints greet message
      */
+    // do this later
     public void greet(){
         System.out.println("Hello! I'm duke.Duke\n" + "What can I do for you?");
     }
@@ -44,13 +45,14 @@ public class Ui {
     /***
      * prints farewell message
      */
-    public void exit(){
+    public String exit(){
         this.scanner.close();
-        System.out.println("Bye. Hope to see you again soon!");
+        return "Bye. Hope to see you again soon!";
     }
     /***
      * prints loading error message
      */
+    // later
     public void showLoadingError(){
         System.out.println("Loading Error Encountered");
     }
@@ -58,45 +60,65 @@ public class Ui {
     /**
      * List the items in the list
      */
-    public void printList(TaskList taskList){
+    public String printList(TaskList taskList){
+        String s = "";
         for (int i = 0; i < taskList.size(); i++) {
-            System.out.println(i + 1 + "." + taskList.get(i));
+            s += (i + 1) + ". " + taskList.get(i) + "\n";
         }
+        return s;
     }
     /**
      * prints message after task is marked
      */
-    public void printMark(int index, Task task){
-        System.out.println("Nice! I've marked this task as done:");
-        System.out.println(index + "." + task);
+    public String printMark(int index, Task task){
+//        return String.format("Nice! I've marked this task as done:\n %d. + %s", index, task.toString());
+        String response = "Nice! I've marked this task as done:\n";
+        response += index + ". " + task;
+        return response;
+//        System.out.println("Nice! I've marked this task as done:");
+//        System.out.println(index + "." + task);
     }
     /**
      * prints message after task is unmarked
      */
-    public void printUnmark(int index, Task task){
-        System.out.println("OK, I've marked this task as not done yet:");
-        System.out.println(index + "." + task);
+    public String printUnmark(int index, Task task){
+        String response = "OK, I've marked this task as not done yet:\n";
+        response += index + ". " + task;
+        return response;
+//        return String.format("OK, I've marked this task as not done yet: \n %d . + %s", index, task.toString());
+//        System.out.println("OK, I've marked this task as not done yet:");
+//        System.out.println(index + "." + task);
     }
     /**
      * prints message after task is added to taskList
      */
-    public void printAddTask(int size, Task task){
-        System.out.println("Got it. I've added this task: \n" + task);
-        System.out.format("Now you have %s tasks in the list.\n", size);
+    public String printAddTask(int size, Task task){
+        String response = "Got it. I've added this task: \n" + task + "\n";
+        response += String.format("Now you have %s tasks in the list.\n", size);
+        return response;
+//        return String.format("Got it. I've added this task: \n %s \nNow you have %d tasks in the list.", task.toString(), size);
+//        System.out.println("Got it. I've added this task: \n" + task);
+//        System.out.format("Now you have %s tasks in the list.\n", size);
     }
     /**
      * prints message when task is about to be deleted
      */
-    public void printDelete(int index, Task task){
-        System.out.println("Noted. I've removed this task: ");
-        System.out.println(index + "." + task);
+    // Double check there
+    public String printDelete(int index, Task task, TaskList taskList) {
+        String s = "Noted. I've removed this task: \n";
+        s += index + "." + task + "\n";
+        s += String.format("Now you have %d tasks in the list.", taskList.size());
+        return s;
     }
-    /**
-     * prints message after task is deleted
-     */
-    public void postDelete(TaskList taskList){
-        System.out.println("Now you have " + taskList.size()  +" tasks in the list.");
-    }
+//        System.out.println("Noted. I've removed this task: ");
+//        System.out.println(index + "." + task);
+
+//    /**
+//     * prints message after task is deleted
+//     */
+//    public String postDelete(TaskList taskList){
+//        return String.format("Now you have  %d   tasks in the list.", taskList.size());
+//    }
 
     /**
      * Prints the error message when Exception occurred
@@ -109,14 +131,19 @@ public class Ui {
     /**
      * prints a line
      */
-    public void showLine() {
-        System.out.println("____________________________________________________________________________");
+    public String showLine() {
+        return "____________________________________________________________________________";
     }
 
-    public void printFind(ArrayList<Task> res) {
-        System.out.println("Here are the matching tasks in your list: ");
+    public String printFind(ArrayList<Task> res) {
+        String s = "Here are the matching tasks in your list: \n";
+//        System.out.println("Here are the matching tasks in your list: ");
+        // PLEASE WORK ON THIS LATER ------------------------
         for (int j = 0; j < res.size(); j++) {
-            System.out.println("        " + (j + 1) + " " + res.get(j));
+            s += "        ";
+            s += (j + 1) + " " + res.get(j);
+//            System.out.println("        " + (j + 1) + " " + res.get(j));
         }
+        return s;
     }
 }

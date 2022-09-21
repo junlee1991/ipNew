@@ -25,8 +25,8 @@ public class ByeCommand extends Command{
      * @param storage
      * @throws DukeException
      */
-    public void execute(TaskList taskList, Ui ui, Storage storage) throws DukeException{
-        ui.exit();
+    public String execute(TaskList taskList, Ui ui, Storage storage) throws DukeException{
         setExitTrue();
+        return ui.exit();
     }
 }

@@ -23,8 +23,8 @@ public class ListCommand extends Command {
      * @param storage
      */
     @Override
-    public void execute(TaskList taskList, Ui ui, Storage storage) {
-        ui.printList(taskList);
+    public String execute(TaskList taskList, Ui ui, Storage storage) {
+        return ui.printList(taskList);
     }
 }
 
