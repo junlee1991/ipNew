@@ -3,36 +3,23 @@ package duke;
 import java.io.File;
 import java.io.IOException;
 
-import javafx.scene.layout.Region;
 import tasks.TaskList;
 import command.Command;
 import exceptions.*;
 
-import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.geometry.Pos;
-import javafx.scene.Node;
-
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 /***
  * Main class
  */
 
-public class Duke{
+public class Duke {
 
     public static final String DIRECTORY_NAME = System.getProperty("user.dir") + File.separator + "data";
     public static final String FILE_NAME = "duke.txt";
@@ -40,7 +27,7 @@ public class Duke{
     private TaskList tasks;
     private Ui ui;
 
-// Tutorial part 2 -----------------------
+    // Tutorial part 2 -----------------------
     private ScrollPane scrollPane;
     private VBox dialogContainer;
     private TextField userInput;
@@ -49,6 +36,7 @@ public class Duke{
 
     private Image user = new Image(this.getClass().getResourceAsStream("/images/DaUser.png"));
     private Image duke = new Image(this.getClass().getResourceAsStream("/images/DaDuke.png"));
+
     /***
      * Constructor for Duke.
      * @param directory
@@ -67,9 +55,10 @@ public class Duke{
         }
     }
 
-    public Duke(){
+    public Duke() {
         ui = new Ui();
         storage = new Storage(DIRECTORY_NAME, FILE_NAME);
+
         try {
             tasks = new TaskList(storage.load());
         } catch (IOException e) {
@@ -78,7 +67,6 @@ public class Duke{
             tasks = new TaskList();
         }
     }
-
 
 
     /**
@@ -96,12 +84,16 @@ public class Duke{
     }
 
 
-
     /***
      * A method to runs the program.
      */
     public void run() {
-        ui.greet();
+//        try {
+//            Command stuff = new GreetCommand(tasks, ui, storage);
+//            stuff.execute(tasks, ui, storage);
+//        }catch (DukeException e) {
+//            ui.showError(e.getMessage());
+//        }
         boolean isExit = false;
         while (!isExit) {
             try {
@@ -229,7 +221,6 @@ public class Duke{
 //        );
 //        userInput.clear();
 //    }
-
 
 
 //    private void handleUserInput() {

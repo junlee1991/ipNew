@@ -37,9 +37,8 @@ public class Ui {
     /***
      * prints greet message
      */
-    // do this later
-    public void greet(){
-        System.out.println("Hello! I'm duke.Duke\n" + "What can I do for you?");
+    public static String greet(){
+        return "Hello! I'm Duke.\n" + "What can I do for you?";
     }
 
     /***
@@ -138,10 +137,9 @@ public class Ui {
     public String printFind(ArrayList<Task> res) {
         String s = "Here are the matching tasks in your list: \n";
 //        System.out.println("Here are the matching tasks in your list: ");
-        // PLEASE WORK ON THIS LATER ------------------------
         for (int j = 0; j < res.size(); j++) {
-            s += "        ";
-            s += (j + 1) + " " + res.get(j);
+//            s += "        ";
+            s += (j + 1) + ". " + res.get(j) + "\n";
 //            System.out.println("        " + (j + 1) + " " + res.get(j));
         }
         return s;
