@@ -70,12 +70,9 @@ public class Ui {
      * prints message after task is marked
      */
     public String printMark(int index, Task task){
-//        return String.format("Nice! I've marked this task as done:\n %d. + %s", index, task.toString());
         String response = "Nice! I've marked this task as done:\n";
         response += index + ". " + task;
         return response;
-//        System.out.println("Nice! I've marked this task as done:");
-//        System.out.println(index + "." + task);
     }
     /**
      * prints message after task is unmarked
@@ -84,9 +81,7 @@ public class Ui {
         String response = "OK, I've marked this task as not done yet:\n";
         response += index + ". " + task;
         return response;
-//        return String.format("OK, I've marked this task as not done yet: \n %d . + %s", index, task.toString());
-//        System.out.println("OK, I've marked this task as not done yet:");
-//        System.out.println(index + "." + task);
+
     }
     /**
      * prints message after task is added to taskList
@@ -95,29 +90,17 @@ public class Ui {
         String response = "Got it. I've added this task: \n" + task + "\n";
         response += String.format("Now you have %s tasks in the list.\n", size);
         return response;
-//        return String.format("Got it. I've added this task: \n %s \nNow you have %d tasks in the list.", task.toString(), size);
-//        System.out.println("Got it. I've added this task: \n" + task);
-//        System.out.format("Now you have %s tasks in the list.\n", size);
+
     }
     /**
      * prints message when task is about to be deleted
      */
-    // Double check there
     public String printDelete(int index, Task task, TaskList taskList) {
         String s = "Noted. I've removed this task: \n";
         s += index + "." + task + "\n";
         s += String.format("Now you have %d tasks in the list.", taskList.size());
         return s;
     }
-//        System.out.println("Noted. I've removed this task: ");
-//        System.out.println(index + "." + task);
-
-//    /**
-//     * prints message after task is deleted
-//     */
-//    public String postDelete(TaskList taskList){
-//        return String.format("Now you have  %d   tasks in the list.", taskList.size());
-//    }
 
     /**
      * Prints the error message when Exception occurred
@@ -136,11 +119,8 @@ public class Ui {
 
     public String printFind(ArrayList<Task> res) {
         String s = "Here are the matching tasks in your list: \n";
-//        System.out.println("Here are the matching tasks in your list: ");
         for (int j = 0; j < res.size(); j++) {
-//            s += "        ";
             s += (j + 1) + ". " + res.get(j) + "\n";
-//            System.out.println("        " + (j + 1) + " " + res.get(j));
         }
         return s;
     }

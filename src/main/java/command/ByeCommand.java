@@ -28,14 +28,13 @@ public class ByeCommand extends Command {
      * @param ui
      * @param storage
      * @throws DukeException
+     * // reused from github: https://github.com/nus-cs2103-AY2223S1/forum/issues/287
      */
     public String execute(TaskList taskList, Ui ui, Storage storage) throws DukeException {
             try{
                 setExitTrue();
                 return ui.exit();
             }finally{
-                // taken from github
-                //https://github.com/nus-cs2103-AY2223S1/forum/issues/287
                 new Timer().schedule(new TimerTask() {
                     @Override
                     public void run() {

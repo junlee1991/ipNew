@@ -2,11 +2,11 @@ package duke;
 
 import java.io.File;
 import java.io.IOException;
+
+import exceptions.DukeException;
 import tasks.TaskList;
 import command.Command;
-import exceptions.*;
 
-import javafx.scene.image.Image;
 
 /***
  * Main class
@@ -19,9 +19,6 @@ public class Duke {
     private Storage storage;
     private TaskList tasks;
     private Ui ui;
-
-    private Image user = new Image(this.getClass().getResourceAsStream("/images/DaUser.png"));
-    private Image duke = new Image(this.getClass().getResourceAsStream("/images/DaDuke.png"));
 
     /***
      * Constructor for Duke
@@ -48,8 +45,7 @@ public class Duke {
     public String getResponse(String command) {
         try {
             Command c = Parser.parse(command);
-            String output = c.execute(tasks, ui, storage);
-            return output;
+            return c.execute(tasks, ui, storage);
         } catch (Exception e) {
             return e.getMessage();
         }
