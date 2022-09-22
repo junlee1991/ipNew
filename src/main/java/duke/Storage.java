@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 /***
  * A storage class to deals with loading tasks from the file and saving tasks in the file
+ * adapted from https://github.com/czhongwei/ip/commit/1a216bd556cf149302e4935a4272f2e0fc2768c1 credit to czhongwei
  */
 
 public class Storage {
@@ -33,6 +34,8 @@ public class Storage {
      * @throws IOException
      */
     public ArrayList<Task> load() throws IOException{
+        assert directory != null;
+        assert filePath != null;
         ArrayList<Task> al = new ArrayList<>();
         File dir = new File(directory);
         if (!dir.exists()) {
@@ -103,6 +106,8 @@ public class Storage {
      * @param taskList
      */
     public void writeFile(TaskList taskList) {
+        assert directory != null;
+        assert filePath != null;
         try{
             String FULL_FILE = directory  + File.separator + filePath;
             File newFile = new File(FULL_FILE);
