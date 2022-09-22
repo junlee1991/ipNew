@@ -1,12 +1,15 @@
 package duke;
-import command.*;
-import exceptions.*;
 
+import command.*;
+import exceptions.BlankException;
+import exceptions.DukeException;
+import exceptions.InvalidInstructionException;
 
 /**
  * A Parser class to deal with making sense of the user command
  *
  * @author Julio Harjo
+ * reused from https://github.com/shaniceng/ip with modification
  */
 public class Parser {
 
@@ -37,7 +40,7 @@ public class Parser {
      * @return Command
      * @throws DukeException
      */
-    public static Command parse(String command) throws DukeException{
+    public static Command parse(String command) throws DukeException {
         String[] c = command.split(" ", 2);
         String instruction = c[0];
         Command com = null;
