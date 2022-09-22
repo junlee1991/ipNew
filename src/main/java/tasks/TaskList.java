@@ -73,4 +73,21 @@ public class TaskList {
     public void remove(int index){
         taskList.remove(index);
     }
+
+    /***
+     * Checks if inserted task is a duplicate
+     * true if duplicate exists
+     * false if no duplicate
+     * adapted from https://github.com/shaniceng/ip/commit/a975cbfbf23c7c8d9a4dc131f0d3e6c06d6120e0
+     * @param task
+     * @return boolean
+     */
+    public boolean checkDuplicate(Task task){
+        for(Task t: taskList){
+            if(t.toString().equals(task.toString())){
+                return true;
+            }
+        }
+        return false;
+    }
 }
