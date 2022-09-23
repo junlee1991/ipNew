@@ -94,6 +94,9 @@ public class Ui {
     }
     /**
      * prints message when task is deleted
+     * @param index
+     * @param task
+     * @param taskList
      */
     public String printDelete(int index, Task task, TaskList taskList) {
         String s = "Noted. I've removed this task: \n";
