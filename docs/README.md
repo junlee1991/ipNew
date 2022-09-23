@@ -1,26 +1,21 @@
 # User Guide
 Adapted from https://github.com/fantablack/ip/blob/master/docs/README.md with slight modification
-# Duke
-> "The important thing to remember, is not to forget"
+Adapted from https://raw.githubusercontent.com/chuashihong/ip/master/docs/README.md with slight modification 
 
-Duke frees your mind of having to remember things you need to do. It's,
+Duke is a task manager which, designed using Java, and has a chatting GUI which makes it easy and fast to learn to use!
 
-* text-based
-* easy to learn
-* ~~FAST~~ SUPER FAST to use
+## Quick start
 
-All you need to do is,
-1. download it from [here](https://github.com/fantablack/ip/releases/tag/A-Jar)
-2. double-click it
-3. add your tasks
-4. let it manage your tasks for you 😜
+1. Ensure you have Java `11` or above installed in your Computer. Download Java 11 [here](https://www.oracle.com/java/technologies/downloads/)d
 
-And best of all, it is ***100% FREE!***
+2. Download the latest `duke.jar` from [here](https://github.com/junlee1991/ip/releases).
 
-Features:
-- [x] Managing tasks
-- [x] Managing deadlines
-- [x] Managing Events
+3. Copy the file to the folder you want to use as the _home folder_.
+
+4. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds.
+
+
+![Ui](Ui.png)
 
 ## Features 
 
@@ -149,7 +144,7 @@ Expected outcome:
 Tasks at index `1` is marked as not done.
 
 ## 9.Exit
-Exit the Duke chatbot with a `bye` command
+Exit the Duke chat bot with a `bye` command
 
 Syntax:
 `bye`
