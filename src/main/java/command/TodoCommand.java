@@ -25,6 +25,7 @@ public class TodoCommand extends Command{
 
     /***
      * adds todo task into Tasklist and updates storage
+     * if duplicate detected, no changes made to taskList or storage
      * @param taskList
      * @param ui
      * @param storage
@@ -32,9 +33,13 @@ public class TodoCommand extends Command{
      */
     @Override
     public String execute(TaskList taskList, Ui ui, Storage storage) throws DukeException {
-            Task task= new Todo(input);
+        Task task= new Todo(input);
+        if(taskList.checkDuplicate(task)){
+            return ui.printDuplicates(task);
+        }else{
             taskList.add(task);
             storage.writeFile(taskList);
             return ui.printAddTask(taskList.size(), task);
+        }
     }
 }

@@ -124,4 +124,8 @@ public class Ui {
         }
         return s;
     }
+
+    public String printDuplicates(Task task){
+        return String.format("Duplicate task detected\n 1. %s", task.toString() );
+    }
 }

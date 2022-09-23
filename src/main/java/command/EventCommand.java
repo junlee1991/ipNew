@@ -18,6 +18,7 @@ public class EventCommand extends Command {
 
     /***
      * Adds an Event Task into the taskList and updates storage files
+     * if duplicate detected, no changes made to taskList or storage
      * @param taskList
      * @param ui
      * @param storage
@@ -30,8 +31,12 @@ public class EventCommand extends Command {
         String description = split[0].trim();
         String time = split[1].trim();
         Task task = new Event(description, time);
-        taskList.add(task);
-        storage.writeFile(taskList);
-        return ui.printAddTask(taskList.size(), task);
+        if(taskList.checkDuplicate(task)){
+            return ui.printDuplicates(task);
+        }else {
+            taskList.add(task);
+            storage.writeFile(taskList);
+            return ui.printAddTask(taskList.size(), task);
+        }
     }
 }
