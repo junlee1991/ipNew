@@ -37,6 +37,8 @@ Be on top of your deadlines!
 ### 1. Add a Todo task
 Adds a new todo `<task todo>`
 
+No duplicate todo task is allowed.
+
 Syntax:
 
 `todo <task todo>`
@@ -56,8 +58,11 @@ Syntax:
 
 `event <event-name> /at dd/MM/yyyy HHmm` 
 
-Please adhere to the date and time format exactly. 
+**Caution:** Please adhere to the date and time format exactly. 
+ 
 For instance, instead of `3`, please put `03`.
+
+No duplicate event is allowed.
 
 Example of usage:
 
@@ -69,6 +74,12 @@ Event `party` at `10/11/2023 1830` gets added.
 
 ### 3. Add a Deadline task
 Adds a Deadline `<deadline-name>` to be done by `dd/MM/yyyy HHmm`
+
+**Caution:** Please adhere to the date and time format exactly.
+
+For instance, instead of `3`, please put `03`.
+
+No duplicate deadline task is allowed.
 
 Syntax:
 
