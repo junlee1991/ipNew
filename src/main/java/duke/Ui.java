@@ -97,7 +97,7 @@ public class Ui {
      */
     public String printDelete(int index, Task task, TaskList taskList) {
         String s = "Noted. I've removed this task: \n";
-        s += index + "." + task + "\n";
+        s += index + ". " + task + "\n";
         s += String.format("Now you have %d tasks in the list.", taskList.size());
         return s;
     }
