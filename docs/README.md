@@ -1,6 +1,5 @@
 # User Guide
-// adapted from bryan! 
-
+Adapted from https://github.com/fantablack/ip/blob/master/docs/README.md with slight modification
 # Duke
 > "The important thing to remember, is not to forget"
 
