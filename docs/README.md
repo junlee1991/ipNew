@@ -1,5 +1,6 @@
 # User Guide
 Adapted from https://github.com/fantablack/ip/blob/master/docs/README.md with slight modification
+
 Adapted from https://raw.githubusercontent.com/chuashihong/ip/master/docs/README.md with slight modification 
 
 Duke is a task manager which, designed using Java, and has a chatting GUI which makes it easy and fast to learn to use!
