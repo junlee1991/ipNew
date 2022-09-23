@@ -150,7 +150,7 @@ Expected outcome:
 Tasks at index `1` is marked as not done.
 
 ## 9.Exit
-Exit the Duke chat bot with a `bye` command
+Exit the Duke chatbot with a `bye` command
 
 Syntax:
 `bye`
