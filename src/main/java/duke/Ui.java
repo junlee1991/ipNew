@@ -93,7 +93,7 @@ public class Ui {
 
     }
     /**
-     * prints message when task is about to be deleted
+     * prints message when task is deleted
      */
     public String printDelete(int index, Task task, TaskList taskList) {
         String s = "Noted. I've removed this task: \n";
