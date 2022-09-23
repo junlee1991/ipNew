@@ -57,6 +57,7 @@ Syntax:
 `event <event-name> /at dd/MM/yyyy HHmm` 
 
 Please adhere to the date and time format exactly. 
+For instance, instead of `3`, please put `03`.
 
 Example of usage:
 
@@ -75,11 +76,11 @@ Syntax:
 
 Example of usage:
 
-`deadline submit thesis /by 15/3/2022 2359`
+`deadline submit thesis /by 15/03/2022 2359`
 
 Expected outcome:
 
-Adds a new Deadline `submit thesis` to be handed in by `15/3/2022 2359`
+Adds a new Deadline `submit thesis` to be handed in by `15/03/2022 2359`
 
 ### 4. List all Tasks
 Syntax:
