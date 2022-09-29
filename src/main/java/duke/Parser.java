@@ -31,8 +31,8 @@ public class Parser {
      * @param ui      The duke.Ui interface used.
      */
     public Parser(Storage storage, Ui ui) {
-        this.storage = storage;
-        this.ui = ui;
+        Parser.storage = storage;
+        Parser.ui = ui;
     }
 
     /***
@@ -44,7 +44,7 @@ public class Parser {
     public static Command parse(String command) throws DukeException {
         String[] c = command.split(" ", 2);
         String instruction = c[0];
-        Command com = null;
+        Command com;
         switch (instruction) {
             case ("list"):
                 com = new ListCommand();
