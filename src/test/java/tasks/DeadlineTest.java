@@ -11,8 +11,3 @@ public class DeadlineTest {
         assertEquals("[D][ ] return book (by: 01 Jul 2022 6:22 PM)", e.toString());
     }
 }
-
-// handle bad behavior
-// Todo bad behavior
-// todo for a list of stuff  u need to do
-// put in the doc
